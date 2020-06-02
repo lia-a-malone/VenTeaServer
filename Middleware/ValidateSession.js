@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken')
 var sequelize = require('../db')
-const User = require('../db').import('../models/User')
+const User = require('../db').import('../Models/User')
 
 const validateSession = (req,res, next) => {
     // next (); -- the request will be sent to the "next" place it should be to move forward

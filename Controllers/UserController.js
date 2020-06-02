@@ -3,7 +3,7 @@ var router = express.Router()
 var sequelize = require('../db')
 var jwt = require('jsonwebtoken')
 var bcrypt = require('bcrypt')
-var User = sequelize.import('../models/User')
+var User = sequelize.import('../Models/User')
 
 
 // SIGN UP POST
