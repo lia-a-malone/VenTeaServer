@@ -20,7 +20,7 @@ router.post('/signup', (req,res) =>{
         console.log(token)
         res.status(200).json({
             user: user,
-            message: 'User created',
+            text: 'User created',
             sessionToken: token,
         })
     })

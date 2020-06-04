@@ -10,7 +10,7 @@ const validateSession = (req,res, next) => {
                 User.findOne({where: {id: decodedToken.id}}) //want to find the user in the database
                     .then(user => {
                         if (!user) throw 'err'; //throw is used for different errs
-    
+                        console.log(user)
                         req.user = user; //creating a new request property & contains all of the user's info
                         return next()
                     })
@@ -22,3 +22,9 @@ const validateSession = (req,res, next) => {
         })
     }
     module.exports = validateSession
+
+    // git add .
+    // git commit -m "text"
+    // git push heroku master
+
+    // heroku logs --tail
