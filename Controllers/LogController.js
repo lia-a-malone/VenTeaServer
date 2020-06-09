@@ -72,8 +72,8 @@ app.post("/log", function(req, res) {
 
 // GET
 
-app.get('/allposts', function(req, res){
-    Log.findAll()
+app.get('/allposts', valSess, function(req, res){
+    Log.findAll({where:{owner: req.user.id}})
     .then(logs => res.status(200).json(logs))
     .catch(error => res.status(500).json(error)) 
 })
@@ -85,13 +85,16 @@ app.get('/potato', function(req, res){
 
 // PUT
 
-app.put('/:id' , function(req,res){
-    res.send('This is from the api/log/:id (put)')
+app.put('/:id' ,valSess, function(req,res){
+    Log.update(req.body, {where : {owner: req.user.id, id: req.params.id}})
+    .then(data => res.status(200).json(data))
 })
 
 // DELETE
-app.delete('/:id' , function(req, res){
-    res.send('This is from the api/log/:id (delete)')
+app.delete('/:id' ,valSess, function(req, res){
+    Log.destroy({where: {owner: req.user.id, id: req.params.id}})
+    .then(data => req.status(200).json(data))
+    .catch(err => res.status(500).json(err))
 })
 
 
